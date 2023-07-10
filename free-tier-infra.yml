@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: AWS CloudFormation Free Tier Template
+Resources:
+  MyEC2Instance:
+    Type: 'AWS::EC2::Instance'
+    Properties:
+      ImageId: 'ami-09f6caae59175ba13'  # Amazon Linux 2 - Kernel 5.10
+      InstanceType: 't2.micro'  # Free tier eligible 
+      BlockDeviceMappings:
+        - DeviceName: "/dev/sdm"
+          Ebs:
+            VolumeType: "gp2"
+            DeleteOnTermination: "true"
+            VolumeSize: "10"
+      Tags: 
+      - Key: "environment"
+        Value: "p"
